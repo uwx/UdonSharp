@@ -1,0 +1,22 @@
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          git clone https://github.com/uwx/UdonSharp
+          cd UdonSharp
+          
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git subtree split --prefix=Packages/com.merlin.UdonSharp -b split
+          git remote add usharp https://uwx:${{ github.token }}@github.com/uwx/USharpSplit.git
+          git checkout split
+          git pull usharp main:split --allow-unrelated-histories
+          git push usharp split:main

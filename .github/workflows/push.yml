@@ -18,3 +18,4 @@ jobs:
           git remote add usharp https://github.com/uwx/USharpSplit
           git fetch usharp
           git merge -s subtree -Xsubtree="Packages/com.merlin.UdonSharp" usharp/main --allow-unrelated-histories
+          git push origin master

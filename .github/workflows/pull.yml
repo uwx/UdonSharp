@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-
           git clone https://github.com/uwx/UdonSharp
           cd UdonSharp
           
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
           git subtree split --prefix=Packages/com.merlin.UdonSharp -b split
           git remote add usharp https://github.com/uwx/USharpSplit
           git checkout split
